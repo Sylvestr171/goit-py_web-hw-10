@@ -9,7 +9,7 @@ class Author(models.Model):
     created=models.DateTimeField(auto_now_add=True)
 
 class Tag(models.Model):
-    name=models.CharField(max_length=30, null=False, unique=True)
+    name=models.CharField(max_length=35, null=False, unique=True)
 
 class Quote(models.Model):
     tags=models.ManyToManyField(Tag)
