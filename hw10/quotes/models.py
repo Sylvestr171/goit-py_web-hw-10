@@ -8,8 +8,14 @@ class Author(models.Model):
     description=models.TextField()
     created=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self) -> str:
+        return self.fullname
+
 class Tag(models.Model):
-    name=models.CharField(max_length=35, null=False, unique=True)
+    name=models.CharField(max_length=36, null=False, unique=True)
+
+    def __str__(self) -> str:
+        return self.name
 
 class Quote(models.Model):
     tags=models.ManyToManyField(Tag)

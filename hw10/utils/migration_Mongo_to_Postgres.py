@@ -37,8 +37,9 @@ for author in authors:
         )
 
 quotes=db.quotes.find()
-tags=[]
+# tags=[]
 for quote in quotes:
+    tags=[]
     for tag in quote['tags']:
         t, *_ = Tag.objects.get_or_create(name=tag)
         tags.append(t)

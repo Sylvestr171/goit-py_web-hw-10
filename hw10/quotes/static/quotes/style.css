@@ -101,3 +101,8 @@ li {
     text-align: -webkit-match-parent;
     unicode-bidi: isolate;
 }
+
+.disabled {
+    color: gray;
+    cursor: not-allowed;
+}
