@@ -14,3 +14,6 @@ def main(request, page=1):
 def author(request, author_fullname):
     author=get_object_or_404(Author, fullname=author_fullname)
     return render(request, 'quotes/author.html', context={'author' : author})
+
+def author_add(request):
+    return render(request, 'quotes/author_add.html', context={})
