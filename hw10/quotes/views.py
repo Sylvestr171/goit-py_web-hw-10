@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Author, Tag, Quote
 from django.core.paginator import Paginator
+from .forms import AuthorForm, QuoteForm
 
 # Create your views here.
 def main(request, page=1):
@@ -16,4 +17,22 @@ def author(request, author_fullname):
     return render(request, 'quotes/author.html', context={'author' : author})
 
 def author_add(request):
-    return render(request, 'quotes/author_add.html', context={})
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to='quotes:root')
+        else:
+            return render(request, 'quotes/author_add.html', {'form': form})
+    return render(request, 'quotes/author_add.html', context={'form': AuthorForm()})
+
+def quote_add(request):
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to='quotes:root')
+        else:
+            return render(request, 'quotes/quote_add.html', {'form': form})
+    return render(request, 'quotes/quote_add.html', context={'form': QuoteForm()})
+

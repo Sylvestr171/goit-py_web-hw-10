@@ -2,20 +2,17 @@
 
 {% block content %}
 
-<form method="POST" action="{% url 'quotes:author_add' %}">
+<form method="POST" action="{% url 'quotes:quote_add' %}">
     {% csrf_token %}
     <div style="padding: 10px">
-        <label>fullname:
-            {{form.fullname}}
+        <label>tags:
+            {{form.tags}}
         </label>
-        <label>born_date:
-            {{form.born_date}}
+        <label>author:
+            {{form.author}}
         </label>
-        <label>born_location:
-            {{form.born_location}}
-        </label>
-        <label>description:
-            {{form.description}}
+        <label>quote:
+            {{form.quote}}
         </label>
         <span>{{ form.errors.name }}</span>
     </div>
