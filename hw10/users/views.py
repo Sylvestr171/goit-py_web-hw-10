@@ -34,7 +34,7 @@ def loginuser(request):
 
     return render(request, 'users/login.html', context={"form": LoginForm()})
 
-@login_required
+@login_required(login_url='users:login')
 def logoutuser(request):
     logout(request)
     return redirect(to='quotes:root')
